@@ -1,0 +1,73 @@
+\documentclass{article}
+
+\usepackage[margin=2cm]{geometry}
+\usepackage{makecell}
+
+\begin{document}
+\hbox{
+	\hspace*{0.08\textwidth}
+	\rule{0.5pt}{\textheight}
+	\hspace*{0.001\textwidth}
+	\rule{0.5pt}{\textheight}
+	\hspace*{0.05\textwidth}
+	\parbox[b]{0.75\textwidth}{
+		{\noindent\huge\bfseries Problem Analysis \& Software Design \\}\\[2\baselineskip] % Title
+		{\large {\textbf{Name:} Robbin de Groot \quad\quad \textbf{S-number:} s3376508}}\\[1\baselineskip]
+		{\large \textbf{Report:} Iteration 0 } \\[\baselineskip] % Tagline or further description
+		{\large \textbf{Date:} \today } \\[4\baselineskip] % Tagline or further description
+		{\large \textsc{ Prof. E.O. de Brock \& Dr. R. Smedinga }
+	}
+	\vspace{0.45\textheight} % Whitespace between the title block and the publisher
+	{\Large\noindent \\ Computing Science - Year 2 \vspace{0.7cm} % Whitespace between the title block and the publisher
+	\Large\noindent \\University of Groningen \vspace{5pt}\\ \large Faculty of Science \& Engineering } % Publisher and logo
+	}
+}
+\newpage
+\section*{Introduction}
+An auctioning company called ``The AuctionHouse\textsuperscript{TM}'' auctions provided goods to buyers. Currently, they auction and display the goods in a warehouse just outside of city limits. Owner John wants to automate the administration of auctions and other activities using an IT solution.
+
+\section*{Expectations Summary and Conclusion}
+John wants the sellers to be able to register their goods in the to-develop-system. These goods then need to be assessed and possibly removed if they lack the requirements. A couple of days before an auction, potential buyers must be able to view the goods. The goods are then auctioned at location (so not through the system).\\
+Currently, regular customers get mail informing them of the goods on sale, rather than having to go and see the availlable goods in person.\\
+Payments are done through cash or card, and not through credit cards. Bigger customers get offered a special billing procedure.
+The police is handed a list of goods on auctions, so they can identify any stolen goods.
+Once the system is completed, a system administrator should make sure every person has the right permissions for the system, and verify that it is operating properly.
+
+\section*{Potential users and user wishes}
+\subsection*{Actors and Users}
+What follows is a list of user (groups) that need to interact with the system directly. The selection is derived from the above provided summary.
+\begin{itemize}
+	\item Owner of The AuctionHouse\textsuperscript{TM} (John)
+	\item Private Individuals and Merchants (Owners of the goods)
+	\item Purchasing agent
+	\item Viewers
+	\item System Administrator
+\end{itemize}
+
+\subsection*{Other Stakeholders}
+Below is the list of people who have interests in the development of the system, or are otherwise involved with it, while not having to interface with it directly.
+\begin{itemize}
+	\item Regular Customer
+	\item Big Customer
+	\item Police
+\end{itemize}
+
+\subsection*{User Wishes and Stories}
+Users and stakeholders need the system to be able to handle their requests. Below is a list of those wishes.
+\begin{itemize}
+	\item Register goods
+	\item Assess registered goods
+	\item Remove goods from the system
+	\item View goods registered
+	\item View auction schedule
+	\item Monitor transactions with the system (view the system log)
+	\item Change/set the level of permissions for a user
+\end{itemize}
+
+% \begin{tabular}{l|l|c}
+% User & Wish & CRUD\\\hline\hline
+% \makecell[l]{Private Individuals\\Merchants} & Register Goods & \textbf{C}RUD
+% Purchasing Agent & Assess goods for sale & C\textbf{R}U\textbf{D}
+
+% \end{tabular}
+\end{document}
