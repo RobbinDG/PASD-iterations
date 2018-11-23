@@ -99,35 +99,50 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 \end{figure}
 
 \section*{Use Cases}
-\subsection*{Creating - Robbin de Groot}
+% layout and sectioning from Slides week 1, page 25
+\subsection*{Create and add an item - Robbin de Groot}
 \subsubsection*{Analysis}
-The system allows permitted users to add goods to the system. To do this, they need to provide a range of information about the item(s) and the owner, such as
-\begin{itemize}[noitemsep]
-	\item The amount of the item available
-	\item The type of item
-	\item A description
-	\item If the item possesses any antiquarian value
-	\item A minimum price decided by the owner
-	\item The date when brought in
-	\item Name and address of the owner plus identification
-	\item Planned auction date
-	\item Distinguishing features
-\end{itemize}
-After entering the necessary information, the system will process it and return a confirmation or failure. 
-Important is that this action is limited to a certain user group, specifically the purchasing agent(s) and higher authorities.\\[\baselineskip]
+\begin{tabular}{@{}l l}
+\textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
+\textbf{Level}:&User goal\\
+\textbf{Primary Actor}:&Purchasing Agent\\
+\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Purchasing Agent: wants to enter parameters easily and quickly\\Seller: wants his goods to be visible to potential buyers\end{tabular}\\
+\textbf{Preconditions}:&Purchasing agent is identified and authenticated.\\
+\textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item has been added to the system, or a failure was returned.\\The product has been registered for an upcoming auction.\\The item is (or will become) visible for potential buyers\\and the otherwise authorized.\end{tabular}\\
+\textbf{Special requirements}:&A list of categories and a list of future auction dates needs to available in the system\\
+\textbf{Frequency of occurence}:&Depedent on the amount of sellers and auctions per month.
+\end{tabular}\\\\
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
 	\item The user starts the transaction.
 	\item The system provides the user with a list of categories to choose from, and a list of future planned aution dates.
-	\item The user provides all necessary information and chooses a category for the item, and an auction date.
+	\item The user provides all necessary information and chooses a category for the item, and an auction date. The information to provide is
+	\begin{itemize}[noitemsep]
+		\item The amount of the item available
+		\item The type of item
+		\item A description
+		\item If the item possesses any antiquarian value
+		\item A minimum price decided by the owner
+		\item The date when brought in
+		\item Name and address of the owner plus identification
+		\item Planned auction date
+		\item Distinguishing features
+	\end{itemize}
 	\item The system adds the item with all information to the list
 	\item The system returns to the user with a confirmation message or a failure
 \end{enumerate}
+\textsl{Extensions}
+\begin{itemize}[noitemsep]
+	\item When a failure is returned, the system database remains unchanged; no item or other information was added.
+	\item When not all required information was provided, the system will first ask the user to provide it until all information is provided.
+\end{itemize}
+\textsl{System Sequence Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{SD-bb-create.pdf}
-	\caption*{A power tree showing the relations between user groups and permissions. Arrows indicate what permissions are inherited}
+	\caption*{Interactions displayed in a System Sequence Diagram in blackbox format}
 \end{figure}
+
 \subsubsection*{Design}
 \subsection*{Updating - Oliver Strik}
 \subsubsection*{Analysis}
