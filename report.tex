@@ -194,7 +194,9 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 	\centering
 	\includegraphics[scale=.9]{domainmodel.pdf}
 \end{figure}
-``A very brief but complete explanation of the domain, congruent with the DM''.
+The domain model is a universal, graphical representation of the use cases and user wishes/stories. It shows how all concepts relate to eachother. For example, you can see that items are `used' by a number of sources, such as buyers, sellers, the auctioneer and the purchasing agent. Items are also contained in an item list, which is just the collection of items. The item list can in turn be viewed by the public.\\
+We also see that all staff is an instance of the staff class. Any staff is then managed by the owner of The AuctionHouse\textsuperscript{TM}. This does not only make sense for our customer, but also for a future implementation, even though that is not (yet) our concern.\\
+Lastly, we see that a number of parties can register something to the system. One is the secretary can add potential buyers and sellers to the system, granting them more permissions than the general public. Another is the purchasing agent, who can, after evaluation, add items to the system, making them available for viewing by the public.
 \section*{References}
 \section*{About Possible Implementation (optional)}
 
