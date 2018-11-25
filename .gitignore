@@ -57,3 +57,4 @@ dkms.conf
 *.gz
 *.fdb_latexmk
 *.aux
+report.pdf
