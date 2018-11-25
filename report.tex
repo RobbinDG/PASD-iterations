@@ -1,11 +1,12 @@
 \documentclass{article}
-
+% !TeX spellcheck = en_US 
 \usepackage[margin=2cm]{geometry}
 \usepackage{makecell}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{enumitem}
+\usepackage[english]{babel}
 
 \begin{document}
 \hbox{
@@ -21,7 +22,7 @@
 		\begin{tabular}{@{}l l l l@{}}
 			\textbf{Names:}& Robbin de Groot  &\textbf{S-number:} &s3376508\\
 			& Oliver Strik  & &s3100693\\
-			& Nicu Ghidirimischi & &
+			& Nicu Ghidirimschi & & s3197395
 		\end{tabular}}\\
 
 		\vspace{6pt}
@@ -81,7 +82,7 @@ Users and stakeholders need the system to be able to handle their requests. Belo
 	\item Administrators: do everything below under test environments
 	\item Owner: add/remove/modify/view staff members
 	\item Purchasing Agent: register/modify items for sale
-	\item Auctioneer: mark item as sold
+	\item Auctioneer: mark item as sold/junk and delete item from the item list
 	\item Secretary: Add registers buyers and sellers to the system
 	\item Secretary: Generate printouts of items for sale/sold/etc.
 	\item Seller: view items they have for sale
@@ -105,7 +106,7 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 \begin{tabular}{@{}l l}
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
 \textbf{Level}:&User goal\\
-\textbf{Primary Actor}:&Purchasing Agent\\
+\textbf{Primary Actor}:&Auctioneer\\
 \textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Purchasing Agent: wants to enter parameters easily and quickly\\Seller: wants his goods to be visible to potential buyers\end{tabular}\\
 \textbf{Preconditions}:&Purchasing agent is identified and authenticated.\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item has been added to the system, or a failure was returned.\\The product has been registered for an upcoming auction.\\The item is (or will become) visible for potential buyers\\and the otherwise authorized.\end{tabular}\\
@@ -182,12 +183,59 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 \textsl{System Sequence Diagram}
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{SD-bb-update.pdf}
+	%\includegraphics[scale=1]{SD-bb-update.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram in blackbox format}
 \end{figure}
 \subsubsection*{Design}
 \subsection*{Deleting - Nicu Ghidirimischi}
 \subsubsection*{Analysis}
+\begin{tabular}{@{}l l}
+\textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
+\textbf{Level}:&User goal\\
+\textbf{Primary Actor}:&Auctioneer\\
+\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Auctioneer: Wants to remove items that are not stored in the stockroom from the item list;
+\\Owner: Does not want to display non-existent items to the viewers;
+\\Viewer: Wants to see only existent items and (if applicable) their actual quantity.  \end{tabular}\\
+\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}Actor is identified and authenticated.\\Item has been already removed from the stockroom but is still present in the item list.\end{tabular}\\
+\textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item list has been updated and does not contain the removed item. \end{tabular}\\
+\textbf{Special requirements}:&\begin{tabular}[t]{@{}l}The item should be identifiable (perhaps with an unique identification number).\end{tabular}\\
+\textbf{Frequency of occurence}:&Very frequent after each auction (once per month), otherwise rarely to even none at all.\\
+\end{tabular}\\\\
+\textsl{Main Success Scenario}
+\begin{enumerate}[noitemsep]
+	\item The user enters the deletion mode.
+	\item The system displays a filterable list of all items.
+	\item (Optional) The user filters the list using the following items characteristics:
+	\begin{itemize}[noitemsep]
+		\item The amount of the item available
+		\item The type of item
+		\item A description
+		\item If the item possesses any antiquarian value
+		\item A minimum price decided by the owner
+		\item The date when brought in
+		\item Name and address of the owner plus identification
+		\item Planned auction date
+		\item Distinguishing features
+	\end{itemize}
+	\item The user selects an item from the resultant list.
+	\item If the item is already in the  "selected for deletion" list remove it and jump to 8.
+	\item The systems prompts the user if the item is surely removed from the stockroom.
+	\item If the user answers yes - add the item to the "selected for deletion" list, otherwise do nothing.
+	\item If the user wants to modify the "selected for deletion" list, repeat steps 2-8.
+	\item Remove all items in the "selected for deletion" list from the item list and display the number of overall deleted items.
+\end{enumerate}
+\textsl{Extensions}
+\begin{itemize}[noitemsep]
+	\item If the "selected for deletion" list is empty, no changes are made to the original item list.
+	\item For homogeneous items that share the same catalog item, decrease the quantity accordingly instead of removing the whole item from the list in case not all items are removed from the stockroom.  \\
+\end{itemize}
+\textsl{System Sequence Diagram}\\\\
+Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format.
+\textit{(Next page)}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{SD-bb-delete.pdf}
+\end{figure}
 \subsubsection*{Design}
 \section*{Domain Model}
 \begin{figure}[H]
