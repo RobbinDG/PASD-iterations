@@ -58,3 +58,4 @@ dkms.conf
 *.fdb_latexmk
 *.aux
 report.pdf
+Group9*
