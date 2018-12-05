@@ -6,15 +6,35 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{enumitem}
+\usepackage{verbatim}
 \usepackage[english]{babel}
 
-% TODOs
-% All:
-% Robbin:
-% Oli:
-% Nicu:
-
+\begin{comment}
+TODOs
+All:
+ - Think about how the printouts can be digitalized without having e.g. the police access the system.
+ - Name design considerations for the DM
+Robbin:
+ - Update SSD
+ - One UC should specify one session. YOu might add more than 1 item per session
+Oli:
+ - Update SSD
+ - Specify in UC title what you are updating
+ - One UC should specify one session. YOu might update more than 1 item per session
+ - Stakeholders and interests box overflows on the left. Use \makecell[l]{text1//text2} for multiline text in tabular
+ - ``Frequency of occurence: Frequent'' <-- seriously?!
+ - Specify what transaction you are starting and with what parameters
+ - ``information'' is ambiguous and non-specific. Use parameters instead.
+Nicu:
+ - Update SSD
+ - Specify in UC title what you are deleting
+ - One UC should specify one session. YOu might delete more than 1 item per session
+ - Honestly, just check the pictures. Theres some many comments and remarks.
+\end{comment}
 \begin{document}
+
+\setcounter{secnumdepth}{0}
+
 \hbox{
 	\hspace*{0.08\textwidth}
 	\rule{0.5pt}{\textheight}
@@ -41,18 +61,21 @@
 }
 \newpage
 
-\section*{Introduction}
+%%% index page
+\tableofcontents
+
+\section{Introduction}
 An auctioning company called ``The AuctionHouse\textsuperscript{TM}'' auctions provided goods to buyers. Currently, they auction and display the goods in a warehouse just outside of city limits. Owner John wants to automate the administration of auctions and other activities using an IT solution.
 
-\section*{Expectations Summary and Conclusion}
+\section{Expectations Summary and Conclusion}
 John wants the sellers to be able to register their goods in the to-develop-system. These goods then need to be assessed and possibly removed if they lack the requirements. A couple of days before an auction, potential buyers must be able to view the goods. The goods are then auctioned at location (so not through the system).\\
 Currently, regular customers get mail informing them of the goods on sale, rather than having to go and see the available goods in person.\\
 Payments are done through cash or card, and not through credit cards. Bigger customers get offered a special billing procedure.
 The police is handed a list of goods on auctions, so they can identify any stolen goods.
 Once the system is completed, a system administrator should make sure every person has the right permissions for the system, and verify that it is operating properly.
 
-\section*{Potential users and user wishes}
-\subsection*{Actors and Users}
+\section{Potential users and user wishes}
+\subsection{Actors and Users}
 What follows is a list of user (groups) that need to interact with the system directly. The selection is derived from the above provided summary. Also is a brief description of the wishes in customer language.
 \begin{itemize}[noitemsep]
 	\item Owner of The AuctionHouse\textsuperscript{TM} (John)\\
@@ -67,7 +90,7 @@ What follows is a list of user (groups) that need to interact with the system di
 		The system administrator is responsible for the system's behaviour and needs to monitor system activity.
 \end{itemize}
 
-\subsection*{Other Stakeholders}
+\subsection{Other Stakeholders}
 Below is the list of stakeholders; people who have interests in the development of the system, or are otherwise involved with it, while not having to interface with it directly or having additional needs compared to other user groups.
 \begin{itemize}[noitemsep]
 	\item Regular Customer\\
@@ -78,48 +101,55 @@ Below is the list of stakeholders; people who have interests in the development 
 		The police has no need to directly access the system. However, they are offered a list (printout) of goods to follow potentially stolen goods.
 \end{itemize}
 
-\subsection*{User Wishes and Stories}
+\subsection{User Wishes and Stories}
 Users and stakeholders need the system to be able to handle their requests. Below is a list of those wishes.
 \begin{itemize}[noitemsep]
 	\item Administrators: do everything below under test environments
 	\item Owner: add/remove/modify/view staff members
 	\item Purchasing Agent: register/modify items for sale
 	\item Auctioneer: mark item as sold/junk and delete item from the item list
-	\item Secretary: Add registers buyers and sellers to the system
+	\item Secretary: Registers buyers and sellers to the system
 	\item Secretary: Generate printouts of items for sale/sold/etc.
+	\item Secretary: Modify basic parameters of items (e.g. modify the auction date of an item).
 	\item Seller: view items they have for sale
 	\item Seller: view items they have sold
 	\item Buyer: view items they have bought
 	\item Public: view items that are for sale
 	\item Public: view auction schedule
 \end{itemize}
-To visualize this, we made a diagram. This diagram is a ``power tree'' that shows how permissions are divided and who can do the same as another user group.
+To visualize this, a diagram is provided. This diagram is a ``power tree'' that shows how permissions are divided and who can do the same as another user group.
 \begin{figure}[H]
 	\centering
 	% ignore the compilation warning, it has to do with the pdf and the graphicx package not accounting for some variable within the file, even though the variable has had no purpose for about 10 years now. #research
 	\includegraphics[scale=.75]{power_tree.pdf}
-	\caption*{A power tree showing the relations between user groups and permissions. Arrows indicate what permissions are inherited}
+	\caption*{A power tree showing the relations between user groups and permissions. Arrows indicate what permissions are inherited. For example, the Owner, Purchasing Agent, Auctioneer, etc. can all do what the public can, with some class specific permissions.}
 \end{figure}
 
-\section*{Use Cases}
+
+
+
+
+\section{Use Cases}
+
+
 % layout and sectioning from Slides week 1, page 25
-\subsection*{Create and add an item - Robbin de Groot (A)}
+\subsection{Create and add an item - Robbin de Groot (A)}
 \subsubsection*{Analysis}
 \begin{tabular}{@{}l l}
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
 \textbf{Level}:&User goal\\
-\textbf{Primary Actor}:&Auctioneer\\
+\textbf{Primary Actor}:&Purchasing Agent\\
 \textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Purchasing Agent: wants to enter parameters easily and quickly\\Seller: wants his goods to be visible to potential buyers\end{tabular}\\
 \textbf{Preconditions}:&Purchasing agent is identified and authenticated.\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item has been added to the system, or a failure was returned.\\The product has been registered for an upcoming auction.\\The item is (or will become) visible for potential buyers\\and the otherwise authorized.\end{tabular}\\
 \textbf{Special requirements}:&A list of categories and a list of future auction dates needs to available in the system\\
-\textbf{Frequency of occurence}:&Depedent on the amount of sellers and auctions per month.
+\textbf{Frequency of occurence}:&Depedent on the amount of sellers and auctions per month. Since there is 1 auction per month. If we expect about 30 sellers, then there are 30 occurences per month, so about 1 per day.
 \end{tabular}\\\\
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
-	\item The user starts the transaction.
+	\item The user starts the `add item' transaction with the system, having all parameters of the item to be added ready.
 	\item The system provides the user with a list of categories to choose from, and a list of future planned aution dates.
-	\item The user provides all necessary information and chooses a category for the item, and an auction date. The information to provide is
+	\item The user provides all necessary parameters and chooses a category for the item, and an auction date. The parameters to provide are:
 	\begin{itemize}[noitemsep]
 		\item The amount of the item available
 		\item The type of item
@@ -131,13 +161,13 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 		\item Planned auction date
 		\item Distinguishing features
 	\end{itemize}
-	\item The system adds the item with all information to the list
-	\item The system returns to the user with a confirmation message or a failure
+	\item The system adds the item with all provided parameters to the list.
+	\item The system returns to the user with a confirmation message containing the item ID, or a failure.
 \end{enumerate}
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
-	\item When a failure is returned, the system database remains unchanged; no item or other information was added.
-	\item When not all required information was provided, the system will first ask the user to provide it until all information is provided.
+	\item When a failure is returned, the system state remains unchanged; no item or other parameters was added.
+	\item When not all required parameters were provided, the system will first ask the user to provide it until all parameters is provided.
 \end{itemize}
 \textsl{System Sequence Diagram}
 \begin{figure}[H]
@@ -146,7 +176,7 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format}
 \end{figure}
 
-\subsection*{Updating - Oliver Strik (B)}
+\subsection{Updating - Oliver Strik (B)}
 \subsubsection*{Analysis}
 \begin{tabular}{@{}l l}
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
@@ -187,7 +217,7 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 	\includegraphics[scale=1]{SD-bb-update.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram in blackbox format}
 \end{figure}
-\subsection*{Deleting - Nicu Ghidirimischi (C)}
+\subsection{Deleting - Nicu Ghidirimischi (C)}
 \subsubsection*{Analysis}
 \begin{tabular}{@{}l l}
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
@@ -235,7 +265,7 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 	\includegraphics[scale=1]{SD-bb-delete.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format.}
 \end{figure}
-\section*{Domain Model}
+\section{Domain Model}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=.9]{domainmodelUPD2.pdf}
@@ -243,8 +273,8 @@ To visualize this, we made a diagram. This diagram is a ``power tree'' that show
 The domain model is a universal, graphical representation of the use cases and user wishes/stories. It shows how all concepts relate to eachother. For example, you can see that items are `used' by a number of sources, such as buyers, sellers, the auctioneer and the purchasing agent. Items are also contained in an item list, which is just the collection of items. The item list can in turn be viewed by the public.\\
 We also see that all staff is an instance of the staff class. Any staff is then managed by the owner of The AuctionHouse\textsuperscript{TM}. This does not only make sense for our customer, but also for a future implementation, even though that is not (yet) our concern.\\
 Lastly, we see that a number of parties can register something to the system. One is the secretary can add potential buyers and sellers to the system, granting them more permissions than the general public. Another is the purchasing agent, who can, after evaluation, add items to the system, making them available for viewing by the public.
-% \section*{References}
-% \section*{About Possible Implementation (optional)}
+% \section{References}
+% \section{About Possible Implementation (optional)}
 
 % arrows for domain models to copy: ► ◄ ▲ ▼
 \end{document}
