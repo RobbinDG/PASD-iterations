@@ -14,9 +14,12 @@ TODOs
 All:
  - Think about how the printouts can be digitalized without having e.g. the police access the system.
  - Name design considerations for the DM
+ - Update user wishes, stories and the like to fit the new requirements
+ - Power tree and Domain Model need updating according to the new requirements
 Robbin:
  - Update SSD
  - One UC should specify one session. YOu might add more than 1 item per session
+ - Check reply from customer
 Oli:
  - Update SSD
  - Specify in UC title what you are updating
@@ -52,7 +55,7 @@ Nicu:
 		\end{tabular}}\\
 
 		\vspace{6pt}
-		{\large \textbf{Report:} Iteration 1 } \\[\baselineskip] % Tagline or further description
+		{\large \textbf{Report:} Iteration 2 } \\[\baselineskip] % Tagline or further description
 		{\large \textbf{Date:} \today } \\[4\baselineskip] % Tagline or further description
 		{\large \textsc{ Prof. E.O. de Brock \& Dr. R. Smedinga }}
 	\vspace{0.40\textheight} % Whitespace between the title block and the publisher
@@ -71,17 +74,24 @@ Nicu:
 
 \section{Use Cases}
 % layout and sectioning from Slides week 1, page 25
-\subsection{Create and add an item - Robbin de Groot (A)}
-\input{content/usecaseA1}
+\subsection{Create and add an item - (A1)}
+\input{content/usecaseA1item.tex}
+\subsection{Create and add a user - (A1)}
+\input{content/usecaseA1user.tex}
 
-\subsection{Updating - Oliver Strik (B)}
+\subsection{Updating - (B1)}
 \input{content/usecaseB1.tex}
 
-\subsection{Deleting - Nicu Ghidirimischi (C)}
+\subsection{Deleting - (C1)}
 \input{content/usecaseC1.tex}
+
+\subsection{Create a Search Service Request - (A2)}
+\input{content/usecaseA2search.tex}
+
 
 \section{Domain Model}
 \input{content/dm.tex}
+\section{Class Diagram}
 % \section{References}
 % \section{About Possible Implementation (optional)}
 
