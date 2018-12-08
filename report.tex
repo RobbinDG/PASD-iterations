@@ -5,8 +5,9 @@
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{caption}
-\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
 \usepackage{verbatim}
+% \usepackage{enumerate}
 \usepackage[english]{babel}
 
 \begin{comment}
@@ -41,6 +42,8 @@ Nicu:
  - One UC should specify one session. YOu might delete more than 1 item per session
  - Honestly, just check the pictures. Theres some many comments and remarks.
 \end{comment}
+
+\DeclareUnicodeCharacter{20AC}{-}
 \begin{document}
 
 \setcounter{secnumdepth}{0}
@@ -99,7 +102,11 @@ Nicu:
 \section{Domain Model}
 \input{content/dm.tex}
 \section{Class Diagram}
-% \section{References}
+\section{References}
+\subsection*{Concact with the customer}
+\begin{enumerate}[1.]
+	\item hello
+\end{enumerate}
 % \section{About Possible Implementation (optional)}
 
 \end{document}
