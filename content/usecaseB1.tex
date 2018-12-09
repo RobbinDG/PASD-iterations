@@ -9,7 +9,7 @@ Purchasing Agent, Auctioneer, Secretary\\
 \textbf{Stakeholders and Interests}:&
 \begin{tabular}[t]{@{}l}
 Purchasing Agent, Auctioneer, Secretary: wants to update ??? an item's\\
-parameters ??? quickly and easly
+parameters ??? quickly and easly.
 \end{tabular}\\
 \textbf{Preconditions}:&
 Actor is identified and authenticated.\\
@@ -17,12 +17,12 @@ Actor is identified and authenticated.\\
 \begin{tabular}[t]{@{}l}
 The item has been updated on the system, or a failure was returned.\\
 The updates to the item's parameters are (or will become) visible for potential\\
- buyers and the otherwise authorized.
+buyers and the otherwise authorized.
 \end{tabular}\\
 \textbf{Special requirements}:&
 \begin{tabular}[t]{@{}l}
-The current parameters of an item and a list of future auction dates needs\\
-to available in the system.
+The current parameters of an item and a list of future auction dates needs to\\
+available in the system. As well as the list of all items in the system.\\
 \end{tabular}\\
 \textbf{Frequency of occurence}:&
 \begin{tabular}[t]{@{}l}
@@ -34,8 +34,10 @@ items (via the secretary) and how many auctions there are where auctioneers\\
 \end{tabular}\\\\
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
-	\item The user starts the update item transaction, with all parameters to be updated ready.
-	\item The system provides the user with the current parameters of the item that they are authorised to edit.
+	\item The user starts the update item transaction.
+	\item The system provides the user with the set of items that exist in the system.
+	\item The user provides the server with the itemID of the item they wish to update. 
+	\item The system provides the user with the current parameters of the item that they are authorised to update.
 	\item The user provides the updated parameters. The parameters that can be updated are:
 	\begin{itemize}[noitemsep]
 		\item The amount of the item available
@@ -49,7 +51,7 @@ items (via the secretary) and how many auctions there are where auctioneers\\
 		\item Distinguishing features
 	\end{itemize}
 	\item The system updates the item with the given parameters.
-	\item The system returns to the user whether it was successful.
+	\item The system returns to the user whether it was successful or not. 
 \end{enumerate}
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
