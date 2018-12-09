@@ -3,19 +3,20 @@
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
 \textbf{Level}:&User goal\\
 \textbf{Primary Actor}:&Auctioneer\\
-\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Auctioneer: Wants to remove items that are not stored in the stockroom from the item list;
+\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Auctioneer: Wants to remove items from the item list;
 \\Owner: Does not want to display non-existent items to the viewers;
 \\Viewer: Wants to see only existent items and (if applicable) their actual quantity.  \end{tabular}\\
-\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}Actor is identified and authenticated.\\Item has been already removed from the stockroom but is still present in the item list.\end{tabular}\\
+\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}Actor is identified and authenticated.\\Actor is authorized to access this use case.\end{tabular}\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item list has been updated and does not contain the removed item. \end{tabular}\\
 \textbf{Special requirements}:&\begin{tabular}[t]{@{}l}The item should be identifiable (perhaps with an unique identification number).\end{tabular}\\
 \textbf{Frequency of occurence}:&Very frequent after each auction (once per month), otherwise rarely to even none at all.\\
 \end{tabular}\\\\
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
-	\item The user enters the deletion mode.
+	\item The user enters the deletion mode for items.
+	\item An empty \textit{selectedForDeletion} list is created.
 	\item The system displays a filterable list of all items.
-	\item (Optional) The user filters the list using the following items characteristics:
+	\item The user filters the list using the following items characteristics:
 	\begin{itemize}[noitemsep]
 		\item The amount of the item available
 		\item The type of item
@@ -27,18 +28,14 @@
 		\item Planned auction date
 		\item Distinguishing features
 	\end{itemize}
-	\item The user selects an item from the resultant list.
-	\item If the item is already in the  "selected for deletion" list remove it and jump to 8.
-	\item The systems prompts the user if the item is surely removed from the stockroom.
-	\item If the user answers yes - add the item to the "selected for deletion" list, otherwise do nothing.
-	\item If the user wants to modify the "selected for deletion" list, repeat steps 2-8.
-	\item Remove all items in the "selected for deletion" list from the item list and display the number of overall deleted items.
+	\item The user selects an item from the resultant filtered (shrinked) list.
+	\item If the item is already in the \textit{selectedForDeletion} list remove it and jump to 9.
+	\item The systems prompts the user whether the item is surely removed from the stockroom.
+	\item If the user answers yes - add the item to the \textit{selectedForDeletion} list, otherwise do nothing.
+	\item If the user wants to modify the \textit{selectedForDeletion} list, repeat steps 3-9.
+	\item Remove all items in the \textit{selectedForDeletion} list from the full item list and display the number of overall deleted items.
 \end{enumerate}
-\textsl{Extensions}
-\begin{itemize}[noitemsep]
-	\item If the "selected for deletion" list is empty, no changes are made to the original item list.
-	\item For homogeneous items that share the same catalog item, decrease the quantity accordingly instead of removing the whole item from the list in case not all items are removed from the stockroom.  \\
-\end{itemize}
+
 \textsl{System Sequence Diagram}\\\\
 \begin{figure}[H]
 	\centering
