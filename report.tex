@@ -9,6 +9,7 @@
 \usepackage[bottom]{footmisc}
 \usepackage{verbatim}
 \usepackage[english]{babel}
+\usepackage{lscape}
 
 \begin{comment}
 TODOs
@@ -118,6 +119,18 @@ Nicu:
 \section{Domain Model}
 \input{content/dm.tex}
 \section{Class Diagram}
+\begin{landscape}
+\begin{figure}[H]
+	\includegraphics[scale=.85]{uml/classdiagram.pdf}
+	\caption*{The class diagram}
+\end{figure}
+\end{landscape}
+
+\begin{figure}[H]
+	\includegraphics{uml/classdiagramsupport.pdf}
+	\caption*{Some support classes for the class diagram}
+\end{figure}
+
 \section{References}
 \subsection*{Concact with the customer}
 \begin{enumerate}[1.]
