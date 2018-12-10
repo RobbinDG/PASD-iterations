@@ -96,6 +96,7 @@ Nicu:
 % layout and sectioning from Slides week 1, page 25
 \subsection{Create and add an item - (A1)}
 \input{content/usecaseA1item.tex}
+\input{content/usecaseA1itemgreywhite.tex}
 \subsection{Create and add a user - (A1)}
 \input{content/usecaseA1user.tex}
 
@@ -105,12 +106,16 @@ Nicu:
 
 \subsection{Deleting items - (C1)}
 \input{content/usecaseC1.tex}
+\input{content/usecaseC1greywhite.tex}
+
+\textbf{Minor clarification}: This white box sequence diagram contains only the Interface-Kernel associations that do not represent Kernel "procedures" (that is, methods that do not return anything to the interface). We justify this with the fact that these methods are represented on the Kernel level by simple atomic instructions (remove an element from the list), and are dependent on the same data as other atomic instructions, the separation of which results in overly complex and unclear design. Although this may deviate from some of the standards, we opted for it since, in our opinion, it allows us to preserve both the initially planned functionality, and the simplicity and clarity of a good design. 
+
 
 \subsection{Create a Search Service Request - (A2)}
 \input{content/usecaseA2search.tex}
 
 \subsection{Update a Search Service Request - (B2)}
-\input{content/usecaseB2.tex}
+%\input{content/usecaseB2.tex}
 
 \subsection{Reserve a book - (C2)}
 \input{content/usecaseC2reserve.tex}
@@ -119,9 +124,10 @@ Nicu:
 \section{Domain Model}
 \input{content/dm.tex}
 \section{Class Diagram}
+\textit{(next page)}
 \begin{landscape}
 \begin{figure}[H]
-	\includegraphics[scale=.85]{uml/classdiagram.pdf}
+	\includegraphics[scale=.85]{uml/classdiagramUPD2.pdf}
 	\caption*{The class diagram}
 \end{figure}
 \end{landscape}
