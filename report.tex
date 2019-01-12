@@ -36,35 +36,15 @@ General Impression: 8
 
 TODOs
 All:
- - Think about how the printouts can be digitalized without having e.g. the police access the system.
  - Name design considerations for the DM
  - Update user wishes, stories and the like to fit the new requirements
  - Power tree and Domain Model need updating according to the new requirements
  - In the class diagram, make sure all visibility is logical (currently, everything is public, marked with +.) See slides for definitions of +, -, #, ~ etc...
  - Add an auction object to DM
+ - Consider adding the following classes to the class diagram: 
+ 	Regular customer, mailing list (physical address), emailing list (digital address), Item categories, ?notification/email?, 
 
 Robbin:
- x Update SSD
- x One UC should specify one session. YOu might add more than 1 item per session
- x Check reply from customer
- x A2 Special Overflows.
- - makes sense of class diagram
- - do white box for B1
-
-Oli:
- - Update SSD
- x Specify in UC title what you are updating
- x One UC should specify one session. YOu might update more than 1 item per session
- x Stakeholders and interests box overflows on the left. Use \makecell[l]{text1//text2} for multiline text in tabular
- x ``Frequency of occurence: Frequent'' <-- seriously?!
- x Specify what transaction you are starting and with what parameters
- x ``information'' is ambiguous and non-specific. Use parameters instead.
- x Updated bb-SD B1
- - Usecase B2
- - bb-SD B2
- - gb and wb for C1
- - gb and wb for A2
- - there are 2 itemIDs in your blackbox. are they the same? are they different? maybe explain?
   
 Nicu:
  - Update SSD
@@ -148,49 +128,14 @@ Nicu:
 
 \section{Domain Model}
 \input{content/dm.tex}
+
 \section{Class Diagram}
 \textit{(next page)}
-\begin{landscape}
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=.85]{uml/classdiagramUPD3.pdf}
-	\caption*{The class diagram}
-\end{figure}
-\end{landscape}
-
-
-The class diagram is a relational diagram between concepts that is closer to the implementation that the Domain Model. It tries to sketch a rough estemate about how the implementation could be realised. It has a great resemblance to object oriented programming since every class can be directly copied into code as a prototype for a future implementation.\\
-The functions are derived from the white box sequence diagrams.\\
-This class diagram is heavily based on relations, especially inheritance. Since our power tree is in essence an abstract simplified form of the class diagram. The primary goal is to have the user be the direct request parser for the interface. This ensures that any change in the kernel does not result in having to change the interface.\\
-When the user authenticates itself, it is either staff or a member which we define as a (subclass of) Role, and attains the functions coming with that user class. This hides other functions that the user is not permitted to use, limiting the power to change the system to a minimum set of functions. As long as the user is permitted, it has access to 4 managers that are collections of (indirectly) all other classes.\\
-All attributes are encapsulated. This is done by limiting the visibility to other classes. Functions are the only way to modify an instance of a class, and as we established, the functions available is limited to the role of the user.\\
-
-Below is a set of support classes that are used to define groups of parameters. However, these are added just to simplify the function arguments and do not add any value.
-
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics{uml/classdiagramsupport.pdf}
-	\caption*{Some support classes for the class diagram}
-\end{figure}
+\input{content/cd.tex}
 
 \section{References}
-\subsection*{Concact with the customer}
-\begin{enumerate}[1.]
-	\item \label{conv1}\textsl{Us:}\\
-	Dear John,\\
+\input{content/refs.tex}
 
-I noticed you forgot to inform us about the frequency of occurrence of the search request. It is vital for the development stage for us to know how often per month a search request is filed (on average).
-
-Regards,\\
-Your trusty development team (group 9)\\
-\vspace{10pt}\\
-\textsl{John:}\\
-Dear people from group 9,\\
-
-The frequency of Search request varies a lot. Sometimes we have 3 on one day, sometimes only one in a whole week. On average, I would say we have approx 12 per month.
-\end{enumerate}
 % \section{About Possible Implementation (optional)}
 
 \end{document}

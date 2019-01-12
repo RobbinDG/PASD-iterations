@@ -3,9 +3,18 @@
 \textbf{Scope}:&The AuctionHouse\textsuperscript{TM} automated administration system\\
 \textbf{Level}:&User goal\\
 \textbf{Primary Actor}:&Purchasing Agent\\
-\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Purchasing Agent: wants to enter parameters easily and quickly\\Seller: wants his goods to be visible to potential buyers\end{tabular}\\
+\textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}
+	Purchasing Agent: wants to register an item easily and quickly.\\
+	Auctioneer: wants the item to be registered for an upcoming auction.\\
+	Seller: wants his goods to be visible to potential buyers.\\
+	Buyer: wants to be notified if they are currently have a search request on this item.\end{tabular}\\
 \textbf{Preconditions}:&Purchasing agent is identified and authenticated.\\
-\textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The item has been added to the system, or a failure was returned.\\The product has been registered for an upcoming auction.\\The item is (or will become) visible for potential buyers\\and the otherwise authorized.\end{tabular}\\
+\textbf{Postconditions}:&\begin{tabular}[t]{@{}l}
+	The item has been registered to the system, or a failure was returned.\\
+	The product has been registered for an upcoming auction.\\
+	The item is visible for potential buyers and the otherwise authorized.\\
+	Buyers with a search request on this item are notified of the addition.
+	\end{tabular}\\
 \textbf{Special requirements}:&A list of categories and a list of future auction dates needs to available in the system\\
 \textbf{Frequency of occurence}:& \begin{tabular}[t]{@{}l}Depedent on the amount of sellers and auctions per month.\\Since there is 1 auction per month. If we expect about 30 sellers, then there\\are 30 occurences per month, so about 1 per day.\end{tabular}
 \end{tabular}\\\\
@@ -26,12 +35,15 @@
 		\item Distinguishing features
 	\end{itemize}
 	\item The system adds the item with all provided parameters to the list and generates an Item ID unique to the item.
-	\item The system returns to the user with a confirmation message containing the generated item ID, or a failure.
+	\item The system checks if there are any search requests looking for this specific item, and notifies the buyers that issued the request that the item is now available.
+	\item The system returns to the user with a confirmation message containing the generated item ID.
 \end{enumerate}
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
-	\item When a failure is returned, the system state remains unchanged; no item or other parameters was added.
-	\item When not all required parameters were provided, the system will first ask the user to provide it until all parameters is provided.
+	\item If there are no planned auctions in the future, the system notifies the user of this and terminates the transaction, leaving the system state unchanged.
+	\item If the provided parameters are entered incorrectly (e.g. not everything is filled in), the system does not continue to add the item, but asks the user to provide the remaining information.
+	\item If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
+	\item If the system fails to add the item to the list (perhaps due to internal/system limitations), the process is aborted and the transaction is terminated, rolling back the system state to the most recent stable (when no such problems occured) version.
 \end{itemize}
 \textsl{System Sequence Diagram}
 \begin{figure}[H]
