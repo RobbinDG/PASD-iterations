@@ -5,23 +5,21 @@
 \textbf{Primary Actor}:&Owner\\
 \textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}
 	Owner: wants to register the search request.\\
-	Buyers: want their search request to be registered by the owner.\end{tabular}\\
+	Customer: wants their search request to be registered by the owner.\end{tabular}\\
 \textbf{Preconditions}:&User is identified and authenticated.\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}
-	The search request is registered in the system.\\
-	The buyer is notified of confirmation or failure.\end{tabular}\\
-\textbf{Special requirements}:&\begin{tabular}[t]{@{}l}A yearly fee of 20 euros must be paid for the service to process the request.\\The system should check whether this is in order.\end{tabular}\\
+	The search request is registered in the system.\end{tabular}\\
+\textbf{Special requirements}:&\begin{tabular}[t]{@{}l}-\end{tabular}\\
 \textbf{Frequency of occurence}:& \begin{tabular}[t]{@{}l}Varies greatly, from 3 times a day, to once a week.\\Estimated to be 12 times per month.\footnotemark\end{tabular}
 \end{tabular}\\\\
 \footnotetext{The numbers came from a contact session with John. Session details are in the references, page \pageref{conv1}}
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
-	\item The user starts the `file search request' transaction for a buyer with the system, having all parameters of the user to be added ready.
-	\item The system confirms the buyer has paid the yearly fee
-	\item The system confirms the interaction and asks the user to provide an item catalogue and a maximum price.
-	\item The user provides these parameters.
-	\item The system creates the search request with the item catalogue,the maximum price and the buyer interested and adds it to the list. The system also generates a Search ID for reference.
-	\item The system informs the buyer that the request has been made.
+	\item The user starts the `file search request' transaction with the system, having all parameters of the user to be added ready.
+	\item The system returns a list of all ``Regular Customers'' that have paid the search system registration fee and a list of ``Item Catalogues'' to the user.
+	\item The user chooses the customer from the first list and a item catalogue (if so desired; may be ignored) and presents the selections to the system, along with a maximum price the customer is willing to pay.
+	\item The system creates the search request with the item catalogue, the maximum price and the customer interested and adds it to the search system's list. The system also generates a Search ID for the request for reference.
+	\item The system informs the customer via email that the request has been made.
 	\item The system returns to the user with a confirmation message containing the Search ID, or a failure.
 \end{enumerate}
 \textsl{Extensions}
