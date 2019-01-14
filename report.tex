@@ -45,8 +45,10 @@ All:
  	Regular customer, mailing list (physical address), emailing list (digital address), Item categories, ?notification/email?, 
 
 Robbin:
+ - A2 SSD still has user instead of actor
   
 Nicu:
+ - C2 SSD still has user instead of actor
  - Update SSD
  - Specify in UC title what you are deleting
  - One UC should specify one session. YOu might delete more than 1 item per session
@@ -94,9 +96,7 @@ Nicu:
 \newpage
 \input{content/intro.tex}
 
-
-
-
+\newpage
 \section{Use Cases}
 % layout and sectioning from Slides week 1, page 25
 \subsection{Create and add an item - (A1)}
@@ -105,36 +105,47 @@ Nicu:
 % \subsection{Create and add a user - (A1)}
 % \input{content/usecaseA1user.tex}
 
+\newpage
 \subsection{Updating an item - (B1)}
 \input{content/usecaseB1.tex}
 \input{content/usecaseB1graywhite.tex}
 
+\newpage
 \subsection{Deleting items - (C1)}
 \input{content/usecaseC1.tex}
 \input{content/usecaseC1greywhite.tex}
 
 \textbf{Minor clarification}: This white box sequence diagram contains only the Interface-Kernel associations that do not represent Kernel "procedures" (that is, methods that do not return anything to the interface). We justify this with the fact that these methods are represented on the Kernel level by simple atomic instructions (remove an element from the list), and are dependent on the same data as other atomic instructions, the separation of which results in overly complex and unclear design. Although this may deviate from some of the standards, we opted for it since, in our opinion, it allows us to preserve both the initially planned functionality, and the simplicity and clarity of a good design. 
 
-
+\newpage
 \subsection{Create a Search Service Request - (A2)}
 \input{content/usecaseA2search.tex}
 \subsection{Pay Search System Registration fee (sub-usecase) - (A2)}
 \input{content/usecaseA2sub.tex}
 
+\newpage
 \subsection{Update a Search Service Request - (B2)}
 \input{content/usecaseB2.tex}
 
+\newpage
 \subsection{Reserve a book - (C2)}
 \input{content/usecaseC2reserve.tex}
 \input{content/usecaseC2greywhite.tex}
 
+\newpage
+\subsection{Register a regular customer - (A3)}
+\input{content/usecaseA3regcust.tex}
+
+\newpage
 \section{Domain Model}
 \input{content/dm.tex}
 
+\newpage
 \section{Class Diagram}
 \textit{(next page)}
 \input{content/cd.tex}
 
+\newpage
 \section{References}
 \input{content/refs.tex}
 
