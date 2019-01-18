@@ -44,9 +44,18 @@
 	\item If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
 	\item If the system fails to add the item to the list (perhaps due to internal/system limitations), the process is aborted and the transaction is terminated, rolling back the system state to the most recent stable (when no such problems occured) version.
 \end{itemize}
+\newpage
 \textsl{System Sequence Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{uml/SD-bb-create.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format}
 \end{figure}
+\textsl{Glossary}
+\begin{center}\begin{tabular}{l|l}
+\textbf{Function}&\textbf{Clarification}\\\hline\hline
+startAddItemTransaction()&\begin{tabular}[t]{@{}l}Starts the `add item' transaction with the system.\end{tabular}\\\hline
+addItem(item parameters)&\begin{tabular}[t]{@{}l}Requests the system to add an item, to be created\\from the provided parameters. This request will \underline{not}\\register the item, only ask the system to create and register\\the item. Therefore, if not all parameters are provided,\\this request can return a failure, leaving the system\\state unchanged.\end{tabular}\\\hline
+createItem(item parameters)&\begin{tabular}[t]{@{}l}Creates an item instance from provided parameters and\\registers it to the system. Returns the id of the new\\item and the status of the creation. This can be ``success''\\or any kind of internal failure.\end{tabular}\\\hline
+notifyInterestedCustomers(ItemID)&\begin{tabular}[t]{@{}l}Sends an email to all buyers who currently have a search\\request looking for this specific item containing a message\\that tells them the item is now available.\end{tabular}
+\end{tabular}\end{center}

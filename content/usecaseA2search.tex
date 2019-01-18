@@ -39,7 +39,7 @@
 \begin{center}\begin{tabular}{l|l}
 \textbf{Function}&\textbf{Clarification}\\\hline\hline
 startAddSearchRequestTransaction()&\begin{tabular}[t]{@{}l}Starts the `add search request' transaction with the system.\end{tabular}\\\hline
-addSearchRequest(request paraometers)&\begin{tabular}[t]{@{}l}Requests the system to add a search request, to be created\\from the provided parameters.\end{tabular}\\\hline
+addSearchRequest(request parameters)&\begin{tabular}[t]{@{}l}Requests the system to add a search request, to be created\\from the provided parameters. This request will \underline{not} register\\the search request, only ask the system to create and add\\the search request. Therefore, if not all parameters\\are provided, the request can return a failure, leaving the\\system state unchanged.\end{tabular}\\\hline
 getPaymentStatus(customer)&\begin{tabular}[t]{@{}l}Gets the payment status of the customer who wants to register\\a search request. Result can be ``Paid'' or ``Not Paid''.\end{tabular}\\\hline
 createSearchRequest(request parameters)&\begin{tabular}[t]{@{}l}Creates a search request from provided parameters and\\registers it to the search system. Returns the id of the new\\search request.\end{tabular}\\\hline
 sendEmail(customer, SearchID)&\begin{tabular}[t]{@{}l}Sends an email to the customer, whose email address is\\known since they are a regular customer (see Domain Model).\end{tabular}
