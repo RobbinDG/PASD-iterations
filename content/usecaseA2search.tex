@@ -6,7 +6,9 @@
 \textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}
 	Owner: wants to register the search request.\\
 	Customer: wants their search request to be registered by the owner.\end{tabular}\\
-\textbf{Preconditions}:&User is identified and authenticated.\\
+\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}
+	User is identified and authenticated.\\
+	The customer is registered to the system as a regular customer\\\end{tabular}\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}
 	The search request is registered in the system.\end{tabular}\\
 \textbf{Special requirements}:&\begin{tabular}[t]{@{}l}-\end{tabular}\\
@@ -25,7 +27,6 @@
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
 	\item If the yearly fee has not been paid, the system will return a failure and ends the transaction.
-	\item When a failure is returned, the system state remains unchanged; no search request or other parameters was added.
 	\item When not all required parameters were provided, the system will first ask the user to provide it until all parameters is provided.
 \end{itemize}
 \textsl{System Sequence Diagram}
@@ -34,3 +35,12 @@
 	\includegraphics[scale=1]{uml/SD-bb-createsearch.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format}
 \end{figure}
+\textsl{Glossary}
+\begin{center}\begin{tabular}{l|l}
+\textbf{Function}&\textbf{Clarification}\\\hline\hline
+startAddSearchRequestTransaction()&\begin{tabular}[t]{@{}l}Starts the `add search request' transaction with the system.\end{tabular}\\\hline
+addSearchRequest(request paraometers)&\begin{tabular}[t]{@{}l}Requests the system to add a search request, to be created\\from the provided parameters.\end{tabular}\\\hline
+getPaymentStatus(customer)&\begin{tabular}[t]{@{}l}Gets the payment status of the customer who wants to register\\a search request. Result can be ``Paid'' or ``Not Paid''.\end{tabular}\\\hline
+createSearchRequest(request parameters)&\begin{tabular}[t]{@{}l}Creates a search request from provided parameters and\\registers it to the search system. Returns the id of the new\\search request.\end{tabular}\\\hline
+sendEmail(customer, SearchID)&\begin{tabular}[t]{@{}l}Sends an email to the customer, whose email address is\\known since they are a regular customer (see Domain Model).\end{tabular}
+\end{tabular}\end{center}
