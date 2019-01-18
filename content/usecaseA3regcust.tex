@@ -47,3 +47,13 @@
 	\includegraphics[scale=1]{uml/SD-bb-regcust.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format. Paramters marked with a `*' are optional and can be omitted.}
 \end{figure}
+\textsl{Glossary}
+\begin{center}\begin{tabular}{l|l}
+\textbf{Function}&\textbf{Clarification}\\\hline\hline
+startRegisterCustomerTransaction()&\begin{tabular}[t]{@{}l}Starts the `register customer' transaction with the system.\end{tabular}\\\hline
+registerCustomer(customer parameters)&\begin{tabular}[t]{@{}l}Requests the system to register a regular customer, to be created\\from the provided parameters. This request will \underline{not} register the\\regular customer in the system. Therefore, this request can return\\a failure, leaving the system state unchanged.\end{tabular}\\\hline
+getPaymentStatus(customer)&\begin{tabular}[t]{@{}l}Gets the payment status of the customer who wants to register\\a search request. Result can be ``Paid'' or ``Not Paid''.\end{tabular}\\\hline
+createCustomer(request parameters)&\begin{tabular}[t]{@{}l}Creates a new regular customer from provided parameters and\\registers it to the search system. Returns the id of the new\\regular customer.\end{tabular}\\\hline
+addCatalogueReceiver(address)&\begin{tabular}[t]{@{}l}Adds the provided address to a Mailing List so the catalogue will\\(from now on) also be sent to this address.\end{tabular}\\\hline
+\begin{tabular}[t]{@{}l}addThemeNotificationReceiver(\\category, e-mail address)\end{tabular}&\begin{tabular}[t]{@{}l}Adds the provided e-mail address to a E-Mailing List for the\\specified category so an e-mail notification related to this category\\will (from now on) also be sent to this e-mail address.\end{tabular}
+\end{tabular}\end{center}
