@@ -7,13 +7,15 @@
 	Purchasing Agent: wants to register an item easily and quickly.\\
 	Auctioneer: wants the item to be registered for an upcoming auction.\\
 	Seller: wants his goods to be visible to potential buyers.\\
-	Buyer: wants to be notified if they are currently have a search request on this item.\end{tabular}\\
+	Buyer: wants to be notified if they are currently have a search request on this item.\\
+	Administration System: wants the addition of the item to be recorded.\end{tabular}\\
 \textbf{Preconditions}:&Purchasing agent is identified and authenticated.\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}
 	The item has been registered to the system, or a failure was returned.\\
 	The product has been registered for an upcoming auction.\\
 	The item is visible for potential buyers and the otherwise authorized.\\
-	Buyers with a search request on this item are notified of the addition.
+	Buyers with a search request on this item are notified of the addition.\\
+	The addition of the item was recorded in the administration system.
 	\end{tabular}\\
 \textbf{Special requirements}:&A list of categories and a list of future auction dates needs to available in the system\\
 \textbf{Frequency of occurence}:& \begin{tabular}[t]{@{}l}Depedent on the amount of sellers and auctions per month.\\Since there is 1 auction per month. If we expect about 30 sellers, then there\\are 30 occurences per month, so about 1 per day.\end{tabular}
@@ -36,6 +38,7 @@
 	\end{itemize}
 	\item The system adds the item with all provided parameters to the list and generates an Item ID unique to the item.
 	\item The system checks if there are any search requests looking for this specific item, and notifies the buyers that issued the request that the item is now available.
+	\item The system records the addition of the item in the administration system.
 	\item The system returns to the user with a confirmation message containing the generated item ID.
 \end{enumerate}
 \textsl{Extensions}
