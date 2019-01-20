@@ -13,10 +13,8 @@ This class diagram is heavily based on relations, especially inheritance. Since 
 When the user authenticates itself, it is either staff or a member which we define as a (subclass of) Role, and attains the functions coming with that user class. This hides other functions that the user is not permitted to use, limiting the power to change the system to a minimum set of functions. As long as the user is permitted, it has access to 4 managers that are collections of (indirectly) all other classes.\\
 All attributes are encapsulated. This is done by limiting the visibility to other classes. Functions are the only way to modify an instance of a class, and as we established, the functions available is limited to the role of the user.\\
 
+
 Below is a set of support classes that are used to define groups of parameters. However, these are added just to simplify the function arguments and do not add any value.
-
-
-
 \begin{figure}[H]
 	\centering
 	\includegraphics{uml/classdiagramsupport.pdf}
