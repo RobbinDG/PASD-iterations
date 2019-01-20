@@ -5,11 +5,10 @@
 \textbf{Level}:&User goal\\
 \textbf{Primary Actor}:&Viewer\\
 \textbf{Stakeholders and Interests}:&\begin{tabular}[t]{@{}l}Viewer: wants to make a reservation for a book in the catalogue.\end{tabular}\\
-\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}User is identified and authenticated.\\The user has a total number of book reservations smaller than \textbf{10}   \footnotemark.\end{tabular}\\
+\textbf{Preconditions}:&\begin{tabular}[t]{@{}l}User is identified and authenticated.\end{tabular}\\
 \textbf{Postconditions}:&\begin{tabular}[t]{@{}l}The selected book is marked in the system as reserved by the user and becomes\\ unavailable for other reservations. \\The user is notified of confirmation or failure of the reservation.\end{tabular}\\
 \textbf{Frequency of occurence}:& \begin{tabular}[t]{@{}l}Difficult to estimate. Will correlate with the number of displayed books and \\the books themselves (their title, rarity etc.) for each particular opening day. \\Expected to be at least 2-3 reservations before each day when book stockroom opens, \\that is $\approx 2.5 \cdot 2 \cdot 4 = 20$ times per month.\end{tabular}
 \end{tabular}\\\\
-\footnotetext{arbitrary constant, can be modified at client's discretion}
 \textsl{Main Success Scenario}
 \begin{enumerate}[noitemsep]
 	\item The user requests the system to make a book reservation.
