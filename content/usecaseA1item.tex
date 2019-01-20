@@ -46,8 +46,7 @@
 \end{enumerate}
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
-	\item 3a. If the provided parameters are provided, the system does not continue to add the item, but asks the user to provide the remaining information.
-	\item 3b. If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
+	\item 3a. If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
 	\item 4a. If the system fails to add the item to the list (perhaps due to internal/system limitations), the process is aborted and the transaction is terminated, rolling back the system state to the most recent stable (when no such problems occured) version.
 	\item 7a. If the catalogue the item belongs to is already known in the system, it will not be added.
 \end{itemize}
