@@ -38,7 +38,7 @@
 		\item Planned auction date
 		\item Distinguishing features
 	\end{itemize}
-	\item The system adds the item with all provided parameters to the list and generates an Item ID unique to the item.
+	\item The system creates the item with all provided parameters to the list and generates an Item ID unique to the item.
 	\item The system checks if there are any search requests looking for this specific item, and notifies the buyers that issued the request that the item is now available.
 	\item The system records the addition of the item in the administration system.
 	\item The system saves the catalogue of the item derived from the description.
@@ -46,23 +46,25 @@
 \end{enumerate}
 \textsl{Extensions}
 \begin{itemize}[noitemsep]
-	\item If the provided parameters are provided, the system does not continue to add the item, but asks the user to provide the remaining information.
-	\item If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
-	\item If the catalogue the item belongs to is already known in the system, it will not be added.
-	\item If the system fails to add the item to the list (perhaps due to internal/system limitations), the process is aborted and the transaction is terminated, rolling back the system state to the most recent stable (when no such problems occured) version.
+	\item 3a. If the provided parameters are provided, the system does not continue to add the item, but asks the user to provide the remaining information.
+	\item 3b. If an identical item is already registered in the system, the system terminates the transaction, leaving the system state unchanged.
+	\item 4a. If the system fails to add the item to the list (perhaps due to internal/system limitations), the process is aborted and the transaction is terminated, rolling back the system state to the most recent stable (when no such problems occured) version.
+	\item 7a. If the catalogue the item belongs to is already known in the system, it will not be added.
 \end{itemize}
-\newpage
 \textsl{System Sequence Diagram}
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=1]{uml/SD-bb-create.pdf}
 	\caption*{Interactions displayed in a System Sequence Diagram defined by the MSS and its extensions in blackbox format}
 \end{figure}
+\newpage
 \textsl{Glossary}
 \begin{center}\begin{tabular}{l|l}
 \textbf{Function}&\textbf{Clarification}\\\hline\hline
 startAddItemTransaction()&\begin{tabular}[t]{@{}l}Starts the `add item' transaction with the system.\end{tabular}\\\hline
 addItem(item parameters)&\begin{tabular}[t]{@{}l}Requests the system to add an item, to be created\\from the provided parameters. This request will \underline{not}\\register the item, only ask the system to create and register\\the item. Therefore, if not all parameters are provided,\\this request can return a failure, leaving the system\\state unchanged.\end{tabular}\\\hline
 createItem(item parameters)&\begin{tabular}[t]{@{}l}Creates an item instance from provided parameters and\\registers it to the system. Returns the id of the new\\item and the status of the creation. This can be ``success''\\or any kind of internal failure.\end{tabular}\\\hline
-notifyInterestedCustomers(ItemID)&\begin{tabular}[t]{@{}l}Sends an email to all buyers who currently have a search\\request looking for this specific item containing a message\\that tells them the item is now available.\end{tabular}
+saveItemCatalogue(description)&\begin{tabular}[t]{@{}l}Creates an item catalogue from the provided and saves it\\to the list of item catalogues.\end{tabular}\\\hline
+notifyInterestedCustomers(ItemID)&\begin{tabular}[t]{@{}l}Sends an email to all buyers who currently have a search\\request looking for this specific item containing a message\\that tells them the item is now available.\end{tabular}\\\hline
+recordAddition(ItemID, item parameters)&\begin{tabular}[t]{@{}l}Records the addition of the item to the system in\\the administration system.\end{tabular}
 \end{tabular}\end{center}
